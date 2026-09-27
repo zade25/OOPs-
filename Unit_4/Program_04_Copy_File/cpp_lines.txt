@@ -1,0 +1,3 @@
+C++ is an object-oriented programming language.
+I am learning C++ in my OOPs course.
+C++ supports classes and objects.

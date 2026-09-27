@@ -1,0 +1,5 @@
+C++ is an object-oriented programming language.
+Python is also a programming language.
+I am learning C++ in my OOPs course.
+File handling is an important topic.
+C++ supports classes and objects.

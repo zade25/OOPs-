@@ -1,0 +1,3 @@
+62|Prachi Zade|85.5|Artificial Intelligence and Data Science|9876
+63|Rahul Patil|78.5|Computer Engineering|54321
+64|Sneha Sharma|91.0|Information Technology|981078
