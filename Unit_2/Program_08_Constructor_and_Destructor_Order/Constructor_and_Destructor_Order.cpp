@@ -1,41 +1,44 @@
 #include <iostream>
 using namespace std;
 
-class Base
+// Base class
+class A
 {
 public:
-    Base()
+    // Constructor of class A
+    A()
     {
-        cout << "Base constructor called." << endl;
-    }
-
-    ~Base()
-    {
-        cout << "Base destructor called." << endl;
+        cout << "Constructor of A" << endl;
     }
 };
 
-class Derived : public Base
+// Class B inherits from A
+class B : public A
 {
 public:
-    Derived()
+    // Constructor of class B
+    B()
     {
-        cout << "Derived constructor called." << endl;
+        cout << "Constructor of B" << endl;
     }
+};
 
-    ~Derived()
+// Class C inherits from B
+class C : public B
+{
+public:
+    // Constructor of class C
+    C()
     {
-        cout << "Derived destructor called." << endl;
+        cout << "Constructor of C" << endl;
     }
 };
 
 int main()
 {
-    cout << "Creating derived object..." << endl;
-
-    Derived obj;
-
-    cout << "Object is active." << endl;
+    // Create an object of class C
+    // Constructors are called from base to derived
+    C object;
 
     return 0;
 }

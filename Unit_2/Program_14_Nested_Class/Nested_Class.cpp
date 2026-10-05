@@ -1,41 +1,40 @@
 #include <iostream>
 using namespace std;
 
-class Student
+// Common base class
+class Person
 {
-private:
-    int rollNumber;
-
 public:
-    Student()
+    // Function to display a message
+    void show() const
     {
-        rollNumber = 62;
+        cout << "Person class function" << endl;
     }
+};
 
-    class Details
-    {
-    public:
-        void display()
-        {
-            cout << "Nested class is inside Student class." << endl;
-        }
-    };
+// Student virtually inherits from Person
+class Student : virtual public Person
+{
+};
 
-    void displayStudent()
-    {
-        cout << "Student Name: Prachi" << endl;
-        cout << "Roll Number: " << rollNumber << endl;
-    }
+// Employee virtually inherits from Person
+class Employee : virtual public Person
+{
+};
+
+// Intern inherits from both Student and Employee
+class Intern : public Student, public Employee
+{
 };
 
 int main()
 {
-    Student student;
+    // Create an object of Intern
+    Intern intern;
 
-    student.displayStudent();
-
-    Student::Details details;
-    details.display();
+    // Because Person is a virtual base class,
+    // only one copy of Person exists in Intern.
+    intern.show();
 
     return 0;
 }

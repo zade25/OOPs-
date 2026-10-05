@@ -1,79 +1,102 @@
 #include <iostream>
-#include <string>
 using namespace std;
 
-class Vehicle
+// Base class
+class Person
 {
 protected:
-    string vehicleNumber;
-    double rentalRate;
+    string name;
 
 public:
-    Vehicle(string number, double rate)
-        : vehicleNumber(number), rentalRate(rate) {}
-
-    virtual void displayDetails()
+    // Constructor to initialize the name
+    Person(string n)
     {
-        cout << "Vehicle Number: " << vehicleNumber << endl;
-        cout << "Rental Rate: Rs. " << rentalRate << " per day" << endl;
+        name = n;
     }
 
-    virtual double calculateRent(int days)
+    // Function to display the name
+    void displayName() const
     {
-        return rentalRate * days;
-    }
-
-    virtual ~Vehicle() = default;
-};
-
-class Car : public Vehicle
-{
-public:
-    Car(string number, double rate)
-        : Vehicle(number, rate) {}
-
-    void displayDetails() override
-    {
-        cout << "Vehicle Type: Car" << endl;
-        cout << "Vehicle Number: " << vehicleNumber << endl;
-        cout << "Rental Rate: Rs. " << rentalRate << " per day" << endl;
+        cout << "Name: " << name << endl;
     }
 };
 
-class Bike : public Vehicle
+// Student inherits from Person
+class Student : public Person
+{
+protected:
+    int rollNumber;
+
+public:
+    // Constructor to initialize Student details
+    Student(string n, int r)
+        : Person(n)
+    {
+        rollNumber = r;
+    }
+
+    // Function to display student details
+    void displayStudent() const
+    {
+        cout << "Roll Number: " << rollNumber << endl;
+    }
+};
+
+// Employee also inherits from Person
+class Employee : public Person
+{
+protected:
+    int employeeId;
+
+public:
+    // Constructor to initialize Employee details
+    Employee(string n, int id)
+        : Person(n)
+    {
+        employeeId = id;
+    }
+
+    // Function to display employee details
+    void displayEmployee() const
+    {
+        cout << "Employee ID: " << employeeId << endl;
+    }
+};
+
+// TeachingAssistant inherits from both Student and Employee
+class TeachingAssistant : public Student, public Employee
 {
 public:
-    Bike(string number, double rate)
-        : Vehicle(number, rate) {}
-
-    void displayDetails() override
+    // Constructor to initialize both base classes
+    TeachingAssistant(string n, int r, int id)
+        : Student(n, r), Employee(n, id)
     {
-        cout << "Vehicle Type: Bike" << endl;
-        cout << "Vehicle Number: " << vehicleNumber << endl;
-        cout << "Rental Rate: Rs. " << rentalRate << " per day" << endl;
+    }
+
+    // Function to display Teaching Assistant details
+    void display() const
+    {
+        cout << "Teaching Assistant Details" << endl;
+
+        // Access Student's copy of Person
+        cout << "Student Side:" << endl;
+        Student::displayName();
+        displayStudent();
+
+        // Access Employee's copy of Person
+        cout << "Employee Side:" << endl;
+        Employee::displayName();
+        displayEmployee();
     }
 };
 
 int main()
 {
-    Car car("MH12AB1234", 1200);
-    Bike bike("MH12CD5678", 500);
+    // Create a TeachingAssistant object
+    TeachingAssistant assistant("Prachi", 62, 1001);
 
-    int days = 3;
-
-    Vehicle* vehicle;
-
-    vehicle = &car;
-    vehicle->displayDetails();
-    cout << "Rental for " << days << " days: Rs. "
-         << vehicle->calculateRent(days) << endl;
-
-    cout << endl;
-
-    vehicle = &bike;
-    vehicle->displayDetails();
-    cout << "Rental for " << days << " days: Rs. "
-         << vehicle->calculateRent(days) << endl;
+    // Display all details
+    assistant.display();
 
     return 0;
 }

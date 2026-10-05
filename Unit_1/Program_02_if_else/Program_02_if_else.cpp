@@ -3,15 +3,20 @@ using namespace std;
 
 int main()
 {
-    int marks;
+    // Store the student's marks
+    int marks = 45;
 
-    cout << "Enter marks: ";
-    cin >> marks;
-
+    // Check whether the student has scored 40 or more marks
     if (marks >= 40)
-        cout << "Prachi has passed the examination." << endl;
+    {
+        // Display Pass if the condition is true
+        cout << "Pass";
+    }
     else
-        cout << "Prachi has failed the examination." << endl;
+    {
+        // Display Fail if the condition is false
+        cout << "Fail";
+    }
 
     return 0;
 }

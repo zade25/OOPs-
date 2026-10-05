@@ -1,19 +1,25 @@
 #include <iostream>
 using namespace std;
 
-int add(int a, int b)
-{
-    return a + b;
-}
+// Function prototype
+// This tells the compiler about the add() function
+int add(int, int);
 
 int main()
 {
-    int num1 = 25;
-    int num2 = 17;
+    // Store two numbers
+    int a = 10;
+    int b = 20;
 
-    cout << "First number: " << num1 << endl;
-    cout << "Second number: " << num2 << endl;
-    cout << "Sum: " << add(num1, num2) << endl;
+    // Call the add() function and display the result
+    cout << "Sum = " << add(a, b) << endl;
 
     return 0;
+}
+
+// Function definition
+// This function returns the sum of two integers
+int add(int x, int y)
+{
+    return x + y;
 }

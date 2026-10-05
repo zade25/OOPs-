@@ -1,39 +1,48 @@
 #include <iostream>
 using namespace std;
 
-class Student
+// Define a Test class
+class Test
 {
 private:
-    int marks;
+    // Private data member
+    int value;
 
 public:
-    Student()
+    // Constructor to initialize the value
+    Test(int v)
     {
-        marks = 85;
+        value = v;
     }
 
-    inline int getMarks()
+    // Inline function to return the private value
+    inline int getValue()
     {
-        return marks;
+        return value;
     }
 
-    friend void displayMarks(Student s);
+    // Declare show() as a friend function
+    // It can access private members of Test
+    friend void show(Test t);
 };
 
-void displayMarks(Student s)
+// Friend function definition
+// This function can directly access the private value
+void show(Test t)
 {
-    cout << "Student Name: Prachi" << endl;
-    cout << "Marks: " << s.marks << endl;
+    cout << t.value;
 }
 
 int main()
 {
-    Student student1;
+    // Create a Test object with value 50
+    Test obj(50);
 
-    cout << "Marks using inline function: "
-         << student1.getMarks() << endl;
+    // Call the inline getter function
+    cout << obj.getValue() << endl;
 
-    displayMarks(student1);
+    // Call the friend function
+    show(obj);
 
     return 0;
 }

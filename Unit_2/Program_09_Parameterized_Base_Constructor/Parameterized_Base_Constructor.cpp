@@ -1,50 +1,62 @@
 #include <iostream>
-#include <string>
-#include <utility>
 using namespace std;
 
-class Person
+// Base class
+class A
 {
-protected:
-    string name;
-
 public:
-    explicit Person(string personName)
-        : name(std::move(personName))
+    // Constructor of class A
+    A()
     {
-        cout << "Person constructor called." << endl;
+        cout << "Constructor of A" << endl;
     }
 
-    void displayName() const
+    // Destructor of class A
+    ~A()
     {
-        cout << "Name: " << name << endl;
+        cout << "Destructor of A" << endl;
     }
 };
 
-class Student : public Person
+// Class B inherits from A
+class B : public A
 {
-private:
-    int rollNumber;
-
 public:
-    Student(string studentName, int roll)
-        : Person(std::move(studentName)), rollNumber(roll)
+    // Constructor of class B
+    B()
     {
-        cout << "Student constructor called." << endl;
+        cout << "Constructor of B" << endl;
     }
 
-    void displayStudent() const
+    // Destructor of class B
+    ~B()
     {
-        displayName();
-        cout << "Roll Number: " << rollNumber << endl;
+        cout << "Destructor of B" << endl;
+    }
+};
+
+// Class C inherits from B
+class C : public B
+{
+public:
+    // Constructor of class C
+    C()
+    {
+        cout << "Constructor of C" << endl;
+    }
+
+    // Destructor of class C
+    ~C()
+    {
+        cout << "Destructor of C" << endl;
     }
 };
 
 int main()
 {
-    Student student("Prachi", 62);
-
-    student.displayStudent();
+    // Create an object of class C
+    // Constructors execute from base to derived
+    C object;
 
     return 0;
 }

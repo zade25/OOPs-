@@ -1,30 +1,33 @@
 #include <iostream>
+#include <string>
 using namespace std;
 
+// Define a Student class
 class Student
 {
 public:
+    // Data members to store student details
     string name;
-    int rollNo;
-    char grade;
+    int age;
 
-    void displayDetails()
+    // Member function to display student details
+    void show()
     {
-        cout << "Student Name: " << name << endl;
-        cout << "Roll Number: " << rollNo << endl;
-        cout << "Grade: " << grade << endl;
+        cout << name << " " << age << endl;
     }
 };
 
 int main()
 {
-    Student student1;
+    // Create an object of the Student class
+    Student s1;
 
-    student1.name = "Prachi";
-    student1.rollNo = 62;
-    student1.grade = 'A';
+    // Assign values to the object's data members
+    s1.name = "Amit";
+    s1.age = 20;
 
-    student1.displayDetails();
+    // Call the member function using the object
+    s1.show();
 
     return 0;
 }

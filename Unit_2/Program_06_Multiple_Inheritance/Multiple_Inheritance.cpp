@@ -1,56 +1,52 @@
 #include <iostream>
 using namespace std;
 
-class Academic
+// First base class
+class Camera
 {
-protected:
-    int academicMarks;
-
 public:
-    explicit Academic(int marks)
-        : academicMarks(marks) {}
-
-    void showAcademic() const
+    // Function to take a photo
+    void takePhoto() const
     {
-        cout << "Academic Marks: " << academicMarks << endl;
+        cout << "Photo taken" << endl;
     }
 };
 
-class Sports
+// Second base class
+class Phone
 {
-protected:
-    int sportsMarks;
-
 public:
-    explicit Sports(int marks)
-        : sportsMarks(marks) {}
-
-    void showSports() const
+    // Function to make a phone call
+    void makeCall() const
     {
-        cout << "Sports Marks: " << sportsMarks << endl;
+        cout << "Call made" << endl;
     }
 };
 
-class Student : public Academic, public Sports
+// Derived class inherits from both Camera and Phone
+class SmartPhone : public Camera, public Phone
 {
 public:
-    Student(int academic, int sports)
-        : Academic(academic), Sports(sports) {}
-
-    void showTotal() const
+    // Function specific to SmartPhone
+    void browseInternet() const
     {
-        cout << "Total Marks: "
-             << academicMarks + sportsMarks << endl;
+        cout << "Browsing internet" << endl;
     }
 };
 
 int main()
 {
-    Student student(85, 15);
+    // Create a SmartPhone object
+    SmartPhone smartphone;
 
-    student.showAcademic();
-    student.showSports();
-    student.showTotal();
+    // Access the function inherited from Camera
+    smartphone.takePhoto();
+
+    // Access the function inherited from Phone
+    smartphone.makeCall();
+
+    // Access the SmartPhone's own function
+    smartphone.browseInternet();
 
     return 0;
 }

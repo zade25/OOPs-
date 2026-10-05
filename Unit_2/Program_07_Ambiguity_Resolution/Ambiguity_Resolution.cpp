@@ -1,34 +1,57 @@
 #include <iostream>
+#include <string>
+#include <utility>
 using namespace std;
 
-class Academic
+// Base class
+class Person
 {
+protected:
+    // Protected member to store the person's name
+    string name;
+
 public:
-    void display()
+    // Base class constructor
+    explicit Person(string personName)
+        : name(std::move(personName))
     {
-        cout << "Academic information" << endl;
+        cout << "Person constructor called" << endl;
     }
 };
 
-class Sports
+// Derived class inherits from Person
+class Student : public Person
 {
-public:
-    void display()
-    {
-        cout << "Sports information" << endl;
-    }
-};
+private:
+    // Private member to store the student's roll number
+    int rollNumber;
 
-class Student : public Academic, public Sports
-{
+public:
+    // Derived class constructor
+    // First calls the Person constructor
+    Student(string studentName, int roll)
+        : Person(std::move(studentName)), rollNumber(roll)
+    {
+        cout << "Student constructor called" << endl;
+    }
+
+    // Function to display student details
+    void display() const
+    {
+        cout << "Name: " << name << endl;
+        cout << "Roll Number: " << rollNumber << endl;
+    }
 };
 
 int main()
 {
-    Student student;
+    // Create a Student object
+    // The Person constructor executes first,
+    // followed by the Student constructor
+    Student student("Amit", 101);
 
-    student.Academic::display();
-    student.Sports::display();
+    // Display student details
+    student.display();
 
     return 0;
 }

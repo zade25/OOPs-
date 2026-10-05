@@ -1,32 +1,31 @@
 #include <iostream>
 using namespace std;
 
+// Define a Student class
 class Student
 {
-private:
+public:
+    // Static data member shared by all Student objects
     static int count;
 
-public:
+    // Constructor
+    // Increase the object count whenever a new object is created
     Student()
     {
         count++;
     }
-
-    static void showCount()
-    {
-        cout << "Total objects created: " << count << endl;
-    }
 };
 
+// Define and initialize the static data member
 int Student::count = 0;
 
 int main()
 {
-    Student student1;
-    Student student2;
-    Student student3;
+    // Create three Student objects
+    Student s1, s2, s3;
 
-    Student::showCount();
+    // Display the total number of objects created
+    cout << Student::count;
 
     return 0;
 }

@@ -7,18 +7,22 @@ private:
     int value;
 
 public:
+    // Constructor to initialize the number
     Number(int v = 0)
     {
         value = v;
     }
 
+    // Function to return the stored value
     int getValue() const
     {
         return value;
     }
 
-    friend Number operator+(const Number& n1, const Number& n2);
+    // Declare the subtraction operator as a friend function
+    friend Number operator-(int n, const Number& obj);
 
+    // Function to display the value
     void display() const
     {
         cout << value << endl;
@@ -26,30 +30,32 @@ public:
 };
 
 // Non-member friend operator function
-Number operator+(const Number& n1, const Number& n2)
+// Supports subtraction in the form: 10 - object
+Number operator-(int n, const Number& obj)
 {
-    return Number(n1.value + n2.value);
+    return Number(n - obj.value);
 }
 
 int main()
 {
+    // Create a Number object
     Number n1(25);
-    Number n2(15);
 
-    Number result = n1 + n2;
+    // Use the friend operator with an integer on the left side
+    Number result = 10 - n1;
 
+    // Display program title and student name
     cout << "Friend Function for Operator Overloading" << endl;
     cout << "Student: Prachi Zade" << endl;
     cout << "----------------------------------------" << endl;
 
-    cout << "First number: ";
+    // Display the original number
+    cout << "Number object: ";
     n1.display();
 
-    cout << "Second number: ";
-    n2.display();
-
-    cout << "Sum: ";
+    // Display the result of 10 - object
+    cout << "Result of 10 - object: ";
     result.display();
 
-    return 0;
+    return 0; // End of the program
 }

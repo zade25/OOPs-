@@ -3,13 +3,14 @@ using namespace std;
 
 int main()
 {
-    int marks[5] = {82, 67, 91, 76, 88};
+    // Create an array to store marks of five students
+    int marks[5] = {78, 82, 91, 67, 88};
 
-    cout << "Marks of five students:" << endl;
-
+    // Use a for loop to access and display each array element
     for (int i = 0; i < 5; i++)
     {
-        cout << "Student " << i + 1 << ": " << marks[i] << endl;
+        // Display the marks of the current student
+        cout << marks[i] << " ";
     }
 
     return 0;

@@ -1,66 +1,50 @@
 #include <iostream>
 using namespace std;
 
-class Person
+// Base class
+class Base
 {
-protected:
-    string name;
-
 public:
-    Person(string personName)
-        : name(personName) {}
-
-    void displayName()
+    // Base class constructor
+    Base()
     {
-        cout << "Name: " << name << endl;
+        cout << "Base constructor" << endl;
+    }
+
+    // Virtual destructor
+    // It ensures proper destruction of derived objects
+    virtual ~Base()
+    {
+        cout << "Base destructor" << endl;
     }
 };
 
-class Student : virtual public Person
+// Derived class
+class Derived : public Base
 {
 public:
-    Student(string studentName)
-        : Person(studentName) {}
-
-    void showStudent()
+    // Derived class constructor
+    Derived()
     {
-        cout << "Student class" << endl;
+        cout << "Derived constructor" << endl;
     }
-};
 
-class Employee : virtual public Person
-{
-public:
-    Employee(string employeeName)
-        : Person(employeeName) {}
-
-    void showEmployee()
+    // Derived class destructor
+    ~Derived()
     {
-        cout << "Employee class" << endl;
-    }
-};
-
-class Manager : public Student, public Employee
-{
-public:
-    Manager(string managerName)
-        : Person(managerName),
-          Student(managerName),
-          Employee(managerName) {}
-
-    void displayManager()
-    {
-        displayName();
-        showStudent();
-        showEmployee();
+        cout << "Derived destructor" << endl;
     }
 };
 
 int main()
 {
-    Manager manager("Prachi");
+    // Create a Derived object using a Base class pointer
+    Base* ptr = new Derived();
 
-    manager.displayManager();
+    // Delete the object through the base class pointer
+    // Because the destructor is virtual,
+    // the Derived destructor is called first
+    delete ptr;
 
     return 0;
 }
